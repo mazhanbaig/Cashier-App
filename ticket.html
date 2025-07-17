@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Your Ticket</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script defer src="js/ticket.js"></script>
+</head>
+
+<body class="bg-black text-white flex items-center justify-center min-h-screen">
+
+    <div class="bg-green-900/20 border border-green-400 p-6 rounded-lg shadow-xl w-full max-w-md text-center">
+        <h2 class="text-2xl font-bold mb-4 text-green-300">✅ Ticket Confirmed!</h2>
+        <div id="ticketInfo" class="text-lg space-y-2"></div>
+        <button onclick="window.print()" class="mt-4 bg-green-500 text-white py-2 px-6 rounded hover:bg-green-600">
+            🖨️ Print Ticket
+        </button>
+    </div>
+
+</body>
+
+</html>

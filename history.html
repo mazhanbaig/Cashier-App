@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Booking History</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gray-900 text-white p-6">
+    <h1 class="text-3xl text-yellow-300 font-bold mb-6">📜 Booking History</h1>
+    <div id="historyList"></div>
+
+    <script>
+        const container = document.getElementById("historyList");
+
+        // Get ticket history
+        let history = JSON.parse(localStorage.getItem("ticketHistory")) || [];
+
+        // If empty, add a sample ticket
+        if (history.length === 0) {
+            const sampleTicket = {
+                name: "Azhan",
+                phone: "03001234567",
+                rides: ["Ferris Wheel", "Haunted House"],
+                quantity: 2,
+                total: 600,
+                time: new Date().toLocaleString(),
+            };
+            history.push(sampleTicket);
+            localStorage.setItem("ticketHistory", JSON.stringify(history));
+        }
+
+        // Show tickets
+        history.reverse().forEach(ticket => {
+            const div = document.createElement("div");
+            div.className = "border border-gray-700 p-4 my-2 rounded bg-gray-800";
+            div.innerHTML = `
+        <p><strong>Name:</strong> ${ticket.name}</p>
+        <p><strong>Phone:</strong> ${ticket.phone}</p>
+        <p><strong>Rides:</strong> ${ticket.rides.join(", ")}</p>
+        <p><strong>Qty:</strong> ${ticket.quantity}</p>
+        <p><strong>Total:</strong> Rs. ${ticket.total}</p>
+        <p><strong>Date:</strong> ${ticket.time}</p>
+      `;
+            container.appendChild(div);
+        });
+    </script>
+</body>
+
+</html>
