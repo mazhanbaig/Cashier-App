@@ -6,112 +6,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book Tickets - Sindbad Park</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        body {
+            background-color: #0b1e14;
+        }
+
+        .border-green-soft {
+            border-color: rgba(32, 142, 78, 0.3);
+        }
+    </style>
 </head>
 
-<body class="bg-black text-white font-sans">
+<body class="text-white font-sans">
 
     <!-- Header -->
-    <header class="bg-black/70 backdrop-blur-md border-b border-white/10 fixed top-0 w-full z-50">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Logo -->
-            <a href="index.html"
-                class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 text-2xl font-bold tracking-wide">
-                Sindbad Park
-            </a>
-
-            <!-- Desktop Nav -->
-            <nav class="hidden md:flex space-x-8 text-white text-sm font-medium">
-                <a href="index.html" class="hover:text-blue-400 transition">Home</a>
-                <a href="booking.html" class="hover:text-blue-400 transition">Booking</a>
-                <a href="history.html" class="hover:text-blue-400 transition">History</a>
+    <header class="fixed top-0 w-full z-50 bg-[#0e2418]/80 backdrop-blur-md border-b border-green-soft">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+            <a href="index.html" class="text-2xl font-bold text-green-400">Sindbad<span
+                    class="text-green-300">Park</span></a>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="index.html" class="hover:text-green-300">Home</a>
+                <a href="booking.html" class="hover:text-green-300">Booking</a>
+                <a href="history.html" class="hover:text-green-300">History</a>
             </nav>
-
-            <!-- Mobile Toggle Button -->
-            <button id="menuToggle" class="md:hidden text-white focus:outline-none">
-                <!-- Hamburger Icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
+            <button id="menuToggle" class="md:hidden text-green-300 focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
             </button>
         </div>
-
-        <!-- Mobile Menu (Floating Box Top-Right) -->
         <div id="mobileMenu"
-            class="hidden absolute top-16 right-6 w-48 rounded-xl bg-black/90 border border-white/10 shadow-lg z-40 p-4 space-y-2">
-            <a href="index.html"
-                class="block px-4 py-2 text-white hover:bg-gradient-to-r from-blue-500 to-cyan-400 hover:text-black rounded-lg transition">Home</a>
-            <a href="booking.html"
-                class="block px-4 py-2 text-white hover:bg-gradient-to-r from-blue-500 to-cyan-400 hover:text-black rounded-lg transition">Booking</a>
-            <a href="history.html"
-                class="block px-4 py-2 text-white hover:bg-gradient-to-r from-blue-500 to-cyan-400 hover:text-black rounded-lg transition">History</a>
+            class="hidden absolute top-16 right-6 w-48 bg-[#132f21] border border-green-soft rounded-lg shadow-md p-4 space-y-2 z-40">
+            <a href="index.html" class="block px-4 py-2 hover:bg-green-800/20 rounded">Home</a>
+            <a href="booking.html" class="block px-4 py-2 hover:bg-green-800/20 rounded">Booking</a>
+            <a href="history.html" class="block px-4 py-2 hover:bg-green-800/20 rounded">History</a>
         </div>
     </header>
 
-    <!-- Booking Section -->
-    <main class="min-h-screen flex  justify-center px-6 pt-36 pb-20 text-center relative">
-        <div class="max-w-xl w-full z-10">
-            <h2
-                class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 mb-4">
-                Book a Ride</h2>
-            <p class="text-gray-300 mb-8">Quickly reserve tickets for rides at the gate. Instant, simple booking system.
-            </p>
+    <!-- Booking Form -->
+    <main class="pt-36 pb-20 px-6">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-4xl font-bold text-green-200 mb-2">🎟️ Book Your Ride</h2>
+            <p class="text-green-300 mb-8">Fill the form below to book tickets for your favorite rides.</p>
 
-            <form id="ticketForm" class="bg-gray-900/80 p-6 rounded-lg border border-gray-700 space-y-4 text-left">
+            <form id="ticketForm" class="space-y-6">
+
+                <!-- Name -->
                 <div>
-                    <label for="name" class="block text-sm mb-1">Customer Name</label>
+                    <label for="name" class="block mb-1 text-sm font-medium text-green-300">👤 Customer Name</label>
                     <input type="text" id="name" required
-                        class="w-full p-2 bg-black border border-gray-700 rounded text-white focus:outline-none focus:ring-2 focus:ring-green-400" />
+                        class="w-full p-3 bg-black border border-green-700 rounded focus:ring-2 focus:ring-green-500 text-white" />
                 </div>
 
+                <!-- Phone -->
                 <div>
-                    <label for="phone" class="block text-sm mb-1">Customer Phone</label>
+                    <label for="phone" class="block mb-1 text-sm font-medium text-green-300">📞 Phone Number</label>
                     <input type="tel" id="phone" required
-                        class="w-full p-2 bg-black border border-gray-700 rounded text-white focus:outline-none focus:ring-2 focus:ring-green-400" />
+                        class="w-full p-3 bg-black border border-green-700 rounded focus:ring-2 focus:ring-green-500 text-white" />
                 </div>
 
+                <!-- Ride -->
                 <div>
-                    <label for="ride" class="block text-sm mb-1">Select Ride</label>
+                    <label for="ride" class="block mb-1 text-sm font-medium text-green-300">🎢 Select Ride</label>
                     <select id="ride" required
-                        class="w-full p-2 bg-black border border-gray-700 rounded text-white focus:outline-none focus:ring-2 focus:ring-green-400">
+                        class="w-full p-3 bg-black border border-green-700 rounded text-white focus:ring-2 focus:ring-green-500">
                         <option value="">-- Choose a Ride --</option>
                         <option value="Roller Coaster">🎢 Roller Coaster</option>
                         <option value="Water Slide">💦 Water Slide</option>
-                        <option value="Merry-Go-Round">🎠 Merry-Go-Round</option>
                         <option value="Haunted House">👻 Haunted House</option>
                         <option value="Bumper Cars">🚗 Bumper Cars</option>
                     </select>
                 </div>
 
+                <!-- Tickets -->
                 <div>
-                    <label for="tickets" class="block text-sm mb-1">No. of Tickets</label>
+                    <label for="tickets" class="block mb-1 text-sm font-medium text-green-300">🎫 Number of
+                        Tickets</label>
                     <input type="number" id="tickets" min="1" required
-                        class="w-full p-2 bg-black border border-gray-700 rounded text-white focus:outline-none focus:ring-2 focus:ring-green-400" />
+                        class="w-full p-3 bg-black border border-green-700 rounded text-white focus:ring-2 focus:ring-green-500" />
                 </div>
 
+                <!-- Price (Auto-filled) -->
+                <div>
+                    <label for="price" class="block mb-1 text-sm font-medium text-green-300">💰 Total Price
+                        (PKR)</label>
+                    <input type="number" id="price" readonly
+                        class="w-full p-3 bg-black border border-green-700 rounded text-green-300 focus:outline-none" />
+                </div>
+
+                <!-- Submit -->
                 <button type="submit"
-                    class="w-full py-2 rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-black font-semibold hover:opacity-90 transition">
+                    class="w-full py-3 rounded-full bg-gradient-to-r from-green-700 to-white text-black font-semibold hover:opacity-90 transition">
                     ✅ Confirm Booking
                 </button>
 
                 <p id="message" class="mt-4 text-green-400 font-medium hidden text-center"></p>
             </form>
         </div>
-
-        <!-- Soft Background -->
-        <div
-            class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-black via-green-900/10 to-blue-900/10 opacity-30 z-0 pointer-events-none">
-        </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gradient-to-r from-green-950 to-black text-center py-4 text-sm text-green-300">
-        &copy; 2025 Sindbad Park. All rights reserved.
+    <footer class="text-center py-6 bg-[#0b1e14] border-t border-green-soft text-sm text-green-300">
+        &copy; 2025 Sindbad Park. The Real-Life Adventure Awaits.
     </footer>
 
-    <!-- Scripts -->
+    <!-- Script -->
     <script>
         const menuToggle = document.getElementById('menuToggle');
         const mobileMenu = document.getElementById('mobileMenu');
@@ -120,48 +118,49 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Optional: Click outside to close the menu
         document.addEventListener('click', (e) => {
             if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
                 mobileMenu.classList.add('hidden');
             }
         });
 
+        const ticketInput = document.getElementById('tickets');
+        const priceInput = document.getElementById('price');
+        const form = document.getElementById('ticketForm');
+        const message = document.getElementById('message');
 
-        document.getElementById('ticketForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const ride = document.getElementById('ride').value;
-            const tickets = parseInt(document.getElementById('tickets').value);
-            const message = document.getElementById('message');
-
-            if (ride && tickets > 0 && name.trim() !== '') {
-                // Get existing history
-                let history = JSON.parse(localStorage.getItem("ticketHistory")) || [];
-
-                // Create new ticket
-                const newTicket = {
-                    name,
-                    phone,
-                    rides: [ride],
-                    quantity: tickets,
-                    total: tickets * 300, // adjust price per ticket if needed
-                    time: new Date().toLocaleString(),
-                };
-
-                // Add and save
-                history.push(newTicket);
-                localStorage.setItem("ticketHistory", JSON.stringify(history));
-
-                // Show message
-                message.innerText = `✅ ${tickets} ticket(s) for ${ride} booked under the name ${name}!`;
-                message.classList.remove('hidden');
-                this.reset();
-            }
+        ticketInput.addEventListener('input', () => {
+            const tickets = parseInt(ticketInput.value);
+            priceInput.value = tickets > 0 ? tickets * 300 : '';
         });
 
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const ride = document.getElementById('ride').value;
+            const tickets = parseInt(ticketInput.value);
+            const totalPrice = parseInt(priceInput.value);
+
+            if (name && phone && ride && tickets > 0) {
+                const history = JSON.parse(localStorage.getItem("ticketHistory")) || [];
+                history.push({
+                    name,
+                    phone,
+                    ride,
+                    tickets,
+                    total: totalPrice,
+                    time: new Date().toLocaleString()
+                });
+                localStorage.setItem("ticketHistory", JSON.stringify(history));
+
+                message.innerText = `✅ ${tickets} ticket(s) for ${ride} booked under ${name}. Total: PKR ${totalPrice}`;
+                message.classList.remove('hidden');
+                form.reset();
+                priceInput.value = '';
+                setTimeout(() => message.classList.add('hidden'), 6000);
+            }
+        });
     </script>
 
 </body>
