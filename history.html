@@ -3,48 +3,108 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Booking History</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Booking History - Sindbad Park</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-</head>
-
-<body class="bg-gray-900 text-white p-6">
-    <h1 class="text-3xl text-yellow-300 font-bold mb-6">📜 Booking History</h1>
-    <div id="historyList"></div>
-
-    <script>
-        const container = document.getElementById("historyList");
-
-        // Get ticket history
-        let history = JSON.parse(localStorage.getItem("ticketHistory")) || [];
-
-        // If empty, add a sample ticket
-        if (history.length === 0) {
-            const sampleTicket = {
-                name: "Azhan",
-                phone: "03001234567",
-                rides: ["Ferris Wheel", "Haunted House"],
-                quantity: 2,
-                total: 600,
-                time: new Date().toLocaleString(),
-            };
-            history.push(sampleTicket);
-            localStorage.setItem("ticketHistory", JSON.stringify(history));
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #0b1e14;
         }
 
-        // Show tickets
-        history.reverse().forEach(ticket => {
-            const div = document.createElement("div");
-            div.className = "border border-gray-700 p-4 my-2 rounded bg-gray-800";
-            div.innerHTML = `
-        <p><strong>Name:</strong> ${ticket.name}</p>
-        <p><strong>Phone:</strong> ${ticket.phone}</p>
-        <p><strong>Rides:</strong> ${ticket.rides.join(", ")}</p>
-        <p><strong>Qty:</strong> ${ticket.quantity}</p>
-        <p><strong>Total:</strong> Rs. ${ticket.total}</p>
-        <p><strong>Date:</strong> ${ticket.time}</p>
-      `;
-            container.appendChild(div);
+        .bg-card {
+            background-color: #132f21;
+        }
+
+        .primary {
+            background-color: #1e7a42;
+        }
+
+        .primary-hover:hover {
+            background-color: #2aa55b;
+        }
+
+        .border-green-soft {
+            border-color: rgba(32, 142, 78, 0.3);
+        }
+    </style>
+</head>
+
+<body class="text-white font-sans">
+
+    <!-- Navbar -->
+    <header class="fixed top-0 w-full z-50 bg-[#0e2418] border-b border-green-soft shadow-md">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+            <a href="#" class="text-2xl font-bold text-green-400">Sindbad<span class="text-green-300">Park</span></a>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="index.html" class="hover:text-green-300">Home</a>
+                <a href="booking.html" class="hover:text-green-300">Booking</a>
+                <a href="history.html" class="text-green-300 font-semibold">History</a>
+            </nav>
+            <button id="menuToggle" class="md:hidden text-green-300 focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        <div id="mobileMenu"
+            class="hidden absolute top-16 right-6 w-48 bg-[#132f21] border border-green-soft rounded-lg shadow-md p-4 space-y-2 z-40">
+            <a href="index.html" class="block px-4 py-2 hover:bg-green-800/20 rounded">Home</a>
+            <a href="booking.html" class="block px-4 py-2 hover:bg-green-800/20 rounded">Booking</a>
+            <a href="history.html"
+                class="block px-4 py-2 hover:bg-green-800/20 rounded font-semibold text-green-300">History</a>
+        </div>
+    </header>
+
+    <!-- Booking History Content -->
+    <main class="pt-28 px-6 pb-16 min-h-screen">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-3xl text-green-200 font-bold mb-6">📜 Booking History</h1>
+            <div id="historyList" class="space-y-4"></div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 bg-[#0b1e14] border-t border-green-soft text-sm text-green-300">
+        &copy; 2025 Sindbad Park. The Ultimate Real-Life Adventure Awaits.
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        // Booking history
+        const container = document.getElementById("historyList");
+        const history = JSON.parse(localStorage.getItem("ticketHistory")) || [];
+
+        if (history.length === 0) {
+            container.innerHTML = `
+        <div class="text-center text-gray-400 mt-16 text-lg">
+          No booking history found 🕸️
+        </div>`;
+        } else {
+            history.reverse().forEach(ticket => {
+                const div = document.createElement("div");
+                div.className = "bg-card border border-green-soft rounded-xl p-5 shadow";
+                div.innerHTML = `
+          <p><strong class="text-green-300">Name:</strong> ${ticket.name}</p>
+          <p><strong class="text-green-300">Phone:</strong> ${ticket.phone}</p>
+          <p><strong class="text-green-300">Rides:</strong> ${ticket.rides.join(", ")}</p>
+          <p><strong class="text-green-300">Qty:</strong> ${ticket.quantity}</p>
+          <p><strong class="text-green-300">Total:</strong> Rs. ${ticket.total}</p>
+          <p><strong class="text-green-300">Date:</strong> ${ticket.time}</p>
+        `;
+                container.appendChild(div);
+            });
+        }
     </script>
 </body>
 
